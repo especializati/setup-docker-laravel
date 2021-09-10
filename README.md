@@ -43,8 +43,8 @@ DB_CONNECTION=mysql
 DB_HOST=mysql
 DB_PORT=3306
 DB_DATABASE=nome_que_desejar_db
-DB_USERNAME=root
-DB_PASSWORD=root
+DB_USERNAME=nome_usuario
+DB_PASSWORD=senha_bem_dificil
 
 CACHE_DRIVER=redis
 QUEUE_CONNECTION=redis
