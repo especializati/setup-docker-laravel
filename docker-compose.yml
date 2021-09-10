@@ -1,7 +1,7 @@
 version: "3.7"
 services:
     # image project
-    curso_x:
+    project_x:
         build: 
             args: 
                 user: carlos
@@ -17,19 +17,19 @@ services:
             - redis
             - queue
         networks: 
-            - cursos
+            - projectx
     
     # nginx
     nginx:
         image: nginx:alpine
         restart: unless-stopped
         ports: 
-            - 8989:80
+            - 80:80
         volumes: 
             - ./:/var/www
             - ./docker/nginx/:/etc/nginx/conf.d/
         networks: 
-            - cursos
+            - projectx
 
     # db mysql
     mysql:
@@ -42,10 +42,8 @@ services:
             MYSQL_USER: ${DB_USERNAME}
         volumes: 
             - ./.docker/mysql/dbdata:/var/lib/mysql
-        ports: 
-            - 3388:3306
         networks: 
-            - cursos
+            - projectx
 
     # queue
     queue:
@@ -62,14 +60,14 @@ services:
         depends_on: 
             - redis
         networks: 
-            - cursos
+            - projectx
 
     # redis
     redis:
         image: redis:latest
         networks: 
-            - cursos
+            - projectx
 
 networks: 
-    cursos:
+    projectx:
         driver: bridge

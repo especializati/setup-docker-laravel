@@ -7,6 +7,12 @@ Clone Repositório
 ```sh
 git clone https://github.com/especializati/setup-docker-laravel.git
 ```
+```sh
+cd setup-docker-laravel && git checkout production
+```
+```sh
+cd ..
+```
 
 
 Clone os Arquivos do Laravel
@@ -58,7 +64,7 @@ docker-compose up -d
 
 Acessar o container
 ```sh
-docker-compose exec curso_x bash
+docker-compose exec project_x bash
 ```
 
 
