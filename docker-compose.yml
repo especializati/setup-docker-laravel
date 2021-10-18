@@ -1,7 +1,7 @@
 version: "3.7"
 services:
     # image project
-    curso_x:
+    laravel_8:
         build: 
             args: 
                 user: carlos
@@ -17,19 +17,19 @@ services:
             - redis
             - queue
         networks: 
-            - cursos
+            - laravel-eti
     
     # nginx
     nginx:
         image: nginx:alpine
         restart: unless-stopped
         ports: 
-            - 8989:80
+            - 8180:80
         volumes: 
             - ./:/var/www
             - ./docker/nginx/:/etc/nginx/conf.d/
         networks: 
-            - cursos
+            - laravel-eti
 
     # db mysql
     mysql:
@@ -45,7 +45,7 @@ services:
         ports: 
             - 3388:3306
         networks: 
-            - cursos
+            - laravel-eti
 
     # queue
     queue:
@@ -62,14 +62,14 @@ services:
         depends_on: 
             - redis
         networks: 
-            - cursos
+            - laravel-eti
 
     # redis
     redis:
         image: redis:latest
         networks: 
-            - cursos
+            - laravel-eti
 
 networks: 
-    cursos:
+    laravel-eti:
         driver: bridge

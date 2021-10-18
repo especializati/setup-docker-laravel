@@ -5,19 +5,20 @@
 ### Passo a passo
 Clone Repositório
 ```sh
-git clone https://github.com/especializati/setup-docker-laravel.git
+git clone https://github.com/especializati/setup-docker-laravel.git my-project
+cd my-project/
 ```
 
 
-Clone os Arquivos do Laravel
+Alterne para a branch laravel 8.x
 ```sh
-git clone https://github.com/laravel/laravel.git example-project
+git checkout laravel-8
 ```
 
 
-Copie os arquivos docker-compose.yml, Dockerfile e o diretório docker/ para o seu projeto
+Remova o versionamento
 ```sh
-cp -r setup-docker-laravel/* example-project/
+rm -rf .git/
 ```
 
 
@@ -28,10 +29,10 @@ cp .env.example .env
 ```
 
 
-Atualizar as variáveis de ambiente do arquivo .env
+Atualize as variáveis de ambiente do arquivo .env
 ```dosini
 APP_NAME=EspecializaTi
-APP_URL=http://localhost:8989
+APP_URL=http://localhost:8180
 
 DB_CONNECTION=mysql
 DB_HOST=mysql
@@ -58,7 +59,7 @@ docker-compose up -d
 
 Acessar o container
 ```sh
-docker-compose exec curso_x bash
+docker-compose exec laravel_8 bash
 ```
 
 
@@ -74,5 +75,5 @@ php artisan key:generate
 ```
 
 
-Acessar o projeto
-[http://localhost:8989](http://localhost:8989)
+Acesse o projeto
+[http://localhost:8180](http://localhost:8180)
