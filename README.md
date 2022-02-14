@@ -62,7 +62,7 @@ docker-compose up -d
 
 Acessar o container
 ```sh
-docker-compose exec laravel_8 bash
+docker-compose exec app bash
 ```
 
 
