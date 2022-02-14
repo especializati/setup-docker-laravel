@@ -1,29 +1,27 @@
 
-# Setup Docker Para Projetos Laravel
+# Setup Docker Para Projetos Laravel 9 com PHP 8
 [Assine a Academy, e Seja VIP!](https://academy.especializati.com.br)
 
 ### Passo a passo
 Clone Repositório
 ```sh
-git clone https://github.com/especializati/setup-docker-laravel.git
+git clone https://github.com/especializati/setup-docker-laravel.git laravel9
 ```
+
 ```sh
-cd setup-docker-laravel && git checkout production
-```
-```sh
-cd ..
+cd laravel9/
 ```
 
 
-Clone os Arquivos do Laravel
+Alterne para a branch laravel 8.x
 ```sh
-git clone https://github.com/laravel/laravel.git example-project
+git checkout laravel-9-com-php-8
 ```
 
 
-Copie os arquivos docker-compose.yml, Dockerfile e o diretório docker/ para o seu projeto
+Remova o versionamento
 ```sh
-cp -r setup-docker-laravel/* example-project/
+rm -rf .git/
 ```
 
 
@@ -34,17 +32,17 @@ cp .env.example .env
 ```
 
 
-Atualizar as variáveis de ambiente do arquivo .env
+Atualize as variáveis de ambiente do arquivo .env
 ```dosini
 APP_NAME=EspecializaTi
-APP_URL=http://localhost:8989
+APP_URL=http://localhost:8180
 
 DB_CONNECTION=mysql
 DB_HOST=mysql
 DB_PORT=3306
 DB_DATABASE=nome_que_desejar_db
-DB_USERNAME=nome_usuario
-DB_PASSWORD=senha_bem_dificil
+DB_USERNAME=root
+DB_PASSWORD=root
 
 CACHE_DRIVER=redis
 QUEUE_CONNECTION=redis
@@ -64,7 +62,7 @@ docker-compose up -d
 
 Acessar o container
 ```sh
-docker-compose exec project_x bash
+docker-compose exec laravel_8 bash
 ```
 
 
@@ -80,5 +78,5 @@ php artisan key:generate
 ```
 
 
-Acessar o projeto
-[http://localhost:8989](http://localhost:8989)
+Acesse o projeto
+[http://localhost:8180](http://localhost:8180)
