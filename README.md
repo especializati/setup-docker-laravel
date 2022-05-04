@@ -12,7 +12,7 @@ cd my-project/
 
 Alterne para a branch laravel 8.x
 ```sh
-git checkout laravel-8
+git checkout laravel-8-with-php-7.4
 ```
 
 
