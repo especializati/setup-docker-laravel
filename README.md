@@ -27,8 +27,9 @@ rm -rf .git/
 
 Crie o Arquivo .env
 ```sh
+mkdir example-project
 cd example-project/
-cp .env.example .env
+cp ../.env.example .env
 ```
 
 
