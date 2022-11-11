@@ -3,7 +3,6 @@ version: "3.7"
 services:
     # image project
     app:
-        container_name: especializati-laravel
         build:
             context: .
             dockerfile: Dockerfile
@@ -19,7 +18,6 @@ services:
     
     # nginx
     nginx:
-        container_name: especializati-nginx
         image: nginx:alpine
         restart: unless-stopped
         ports: 
@@ -32,7 +30,6 @@ services:
 
     # db mysql
     mysql:
-        container_name: especializati-mysql
         image: mysql:5.7.22
         restart: unless-stopped
         environment: 
@@ -49,7 +46,6 @@ services:
 
     # queue
     queue:
-        container_name: especializati-queue
         image: especializati/laravel-app
         restart: unless-stopped
         command: "php artisan queue:work"
@@ -63,7 +59,6 @@ services:
 
     # redis
     redis:
-        container_name: especializati-redis
         image: redis:latest
         networks: 
             - laravel
