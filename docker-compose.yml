@@ -6,7 +6,6 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        image: especializati/laravel-app
         restart: unless-stopped
         working_dir: /var/www/
         volumes:
