@@ -1,6 +1,6 @@
-FROM php:8.1-fpm
+FROM php:8.1.1-fpm
 
-# set your user name, ex: user=bernardo
+# Arguments
 ARG user=carlos
 ARG uid=1000
 
@@ -12,13 +12,18 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     zip \
-    unzip
+    unzip \
+    supervisor
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd sockets
+
+# Install Swoole
+RUN pecl install swoole
+RUN docker-php-ext-enable swoole
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -36,4 +41,12 @@ RUN pecl install -o -f redis \
 # Set working directory
 WORKDIR /var/www
 
-USER $user
+COPY start-container /usr/local/bin/start-container
+RUN chmod +x /usr/local/bin/start-container
+
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY php.ini /usr/local/etc/php/conf.d/custom.ini
+
+EXPOSE 8000
+
+ENTRYPOINT ["start-container"]
