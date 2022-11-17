@@ -1,11 +1,11 @@
 
-# Setup Docker Para Projetos Laravel (8 ou 9)
+# Setup Docker Para Projetos Laravel (+9) (com Swoole + Octane)
 [Assine a Academy, e Seja VIP!](https://academy.especializati.com.br)
 
 ### Passo a passo
 Clone Repositório
 ```sh
-git clone https://github.com/especializati/setup-docker-laravel.git
+git clone -b production https://github.com/especializati/setup-docker-laravel.git
 ```
 
 Clone os Arquivos do Laravel
@@ -31,7 +31,7 @@ cp .env.example .env
 
 Atualize as variáveis de ambiente do arquivo .env
 ```dosini
-APP_NAME=EspecializaTi
+APP_NAME="Especializa Ti"
 APP_URL=http://localhost:8989
 
 DB_CONNECTION=mysql
@@ -48,6 +48,8 @@ SESSION_DRIVER=redis
 REDIS_HOST=redis
 REDIS_PASSWORD=null
 REDIS_PORT=6379
+
+OCTANE_SERVER=swoole
 ```
 
 
@@ -57,23 +59,23 @@ docker-compose up -d
 ```
 
 
-Acessar o container
+Acesse o container app
 ```sh
 docker-compose exec app bash
 ```
 
 
-Instalar as dependências do projeto
+Instale as dependências do projeto
 ```sh
 composer install
 ```
 
 
-Gerar a key do projeto Laravel
+Gere a key do projeto Laravel
 ```sh
 php artisan key:generate
 ```
 
 
-Acessar o projeto
+Acesse o projeto
 [http://localhost:8989](http://localhost:8989)
