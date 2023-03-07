@@ -1,25 +1,14 @@
 
-# Setup Docker Para Projetos Laravel (8, 9 ou 10)
+# Setup Docker Laravel 10 com PHP 8.1
 [Assine a Academy, e Seja VIP!](https://academy.especializati.com.br)
 
 ### Passo a passo
 Clone Repositório
 ```sh
-git clone https://github.com/especializati/setup-docker-laravel.git
-```
-
-Clone os Arquivos do Laravel
-```sh
-git clone https://github.com/laravel/laravel.git app-laravel
-```
-
-
-Copie os arquivos docker-compose.yml, Dockerfile e o diretório docker/ para o seu projeto
-```sh
-cp -rf setup-docker-laravel/* app-laravel/
+git clone -b laravel-10-com-php-8.1 https://github.com/especializati/setup-docker-laravel.git app-laravel
 ```
 ```sh
-cd app-laravel/
+cd app-laravel
 ```
 
 
@@ -57,23 +46,23 @@ docker-compose up -d
 ```
 
 
-Acessar o container
+Acesse o container app
 ```sh
 docker-compose exec app bash
 ```
 
 
-Instalar as dependências do projeto
+Instale as dependências do projeto
 ```sh
 composer install
 ```
 
 
-Gerar a key do projeto Laravel
+Gere a key do projeto Laravel
 ```sh
 php artisan key:generate
 ```
 
 
-Acessar o projeto
+Acesse o projeto
 [http://localhost:8989](http://localhost:8989)
