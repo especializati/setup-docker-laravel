@@ -17,13 +17,20 @@ services:
 
     # nginx
     nginx:
-        image: nginx:alpine
+        build:
+            context: ./docker/nginx/
+            args:
+                NGINX_VERSION: '1.25.2'
         restart: unless-stopped
+        container_name: nginx
         ports:
-            - "8989:80"
+            - '80:80'
+            - '443:443'
         volumes:
-            - ./:/var/www
-            - ./docker/nginx/:/etc/nginx/conf.d/
+            - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+            - ./docker/nginx/sites-available:/etc/nginx/sites-available
+            - ./docker/nginx/letsencrypt:/etc/letsencrypt
+            - ./:/var/www/
         networks:
             - laravel
 
