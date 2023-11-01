@@ -80,7 +80,7 @@ Acessar o projeto
 
 Gerar o certificado SSL
 ```sh
-docker exec nginx bash
+docker exec -it nginx bash
 ```
 ```sh
 certbot --nginx
