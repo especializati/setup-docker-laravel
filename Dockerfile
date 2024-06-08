@@ -1,7 +1,7 @@
 FROM php:8.3-fpm
 
 # set your user name, ex: user=carlos
-ARG user=yourusername
+ARG user=margo
 ARG uid=1000
 
 # Install system dependencies
@@ -27,6 +27,8 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN useradd -G www-data,root -u $uid -d /home/$user $user
 RUN mkdir -p /home/$user/.composer && \
     chown -R $user:$user /home/$user
+    
+CMD /var/www/install-laravel.sh
 
 # Install redis
 RUN pecl install -o -f redis \
