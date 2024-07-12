@@ -31,16 +31,9 @@ class SupportService
         return $this -> repository -> new($dto);
      }
 
-     public function update(
-        UpdateSupportDTO $dto
-    ): stdClass|null
+     public function update(UpdateSupportDTO $dto):stdClass|null
     {
-        return $this -> repository -> new(
-            $id,
-            $subject,
-            $status,
-            $body,
-        );
+        return $this -> repository -> update($dto);
      }
 
     public function delete(string $id): void
