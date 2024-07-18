@@ -15,8 +15,25 @@ class SupportEloquentORM implements SupportRepositoryInterface
     public function __construct(
         protected Support $model
     )
+    { 
+    }
+
+    public function paginate(int $page = 1, int $totalPerPage = 15, string $filter = null) : PaginationInterface
     {
         
+        $result =  $this->model
+                    ->where(function ($query) use ($filter){
+                        if($filter){
+                            $query->where('subject', $filter);
+                            $query->orWhere('body', 'like', "%$filter%");
+
+                        }
+                    })
+                    ->paginate($totalPerPage, ["*"],"page", $page);
+
+        return new PaginationPresenter($result); 
+                    
+
     }
     
     
@@ -31,7 +48,7 @@ class SupportEloquentORM implements SupportRepositoryInterface
 
                         }
                     })
-                    ->all()
+                    ->get()
                     ->toArray();
     }
     public function findOne(string $id) : stdClass|null
