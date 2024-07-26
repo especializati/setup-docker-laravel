@@ -31,11 +31,11 @@ class PaginationPresenter implements PaginationInterface
     {
         return $this->paginator->total() ?? 0;
     }
-    public function isfirstPage(): bool
+    public function isFirstPage(): bool
     {
         return $this->paginator->onFirstPage();
     }
-    public function islastPage(): bool
+    public function isLastPage(): bool 
     {
         return $this->paginator->currentPage() === $this->paginator->lastPage();
     }
@@ -71,15 +71,15 @@ class PaginationPresenter implements PaginationInterface
 
         private function resolveItems(array $items): array
         {
-        $response = [];
-        foreach ($items as $item) {
-            $stdClassObject = new \stdClass(); // Correção: criação e atribuição da instância corretamente
-            foreach ($item->toArray() as $key => $value) {
-                $stdClassObject->{$key} = $value; // Correção: acesso a propriedade corretamente
+            $response = [];
+            foreach ($items as $item) {
+                $stdClassObject = new \stdClass; // Correção: criação e atribuição da instância corretamente
+                foreach ($item->toArray() as $key => $value) {
+                    $stdClassObject->{$key} = $value; // Correção: acesso a propriedade corretamente
+                }
+                array_push($response, $stdClassObject); // Adiciona o objeto ao array de resposta
             }
-            array_push($response, $stdClassObject); // Adiciona o objeto ao array de resposta
-        }
-        return $response;
+            return $response;
         }
 
         

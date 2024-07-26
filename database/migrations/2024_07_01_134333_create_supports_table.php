@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\SupportStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,7 +15,7 @@ return new class extends Migration
         Schema::create('supports', function (Blueprint $table) {
             $table->id();
             $table->string('subject'); //assunto
-            $table->enum('status', ['a','p','c']); //status
+            $table->enum('status', array_column(SupportStatus::cases(), 'name')); //status
             $table->text('body'); //conteudo
             $table->timestamps();
         });

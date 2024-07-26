@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\DTO\CreateSupportDTO;
-use App\DTO\UpdateSupportDTO;
+use App\DTO\Supports\CreateSupportDTO;
+use App\DTO\Supports\UpdateSupportDTO;
 use App\Repositories\PaginationInterface;
 use App\Repositories\SupportRepositoryInterface;
 use SebastianBergmann\Type\NullType;

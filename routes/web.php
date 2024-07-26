@@ -1,10 +1,18 @@
 <?php
 
+use App\Enums\SupportStatus;
 use App\Http\Controllers\Admin\{SupportController};
 use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
 
-Route::delete('/supports/{id},',[SupportController::class,'destroy']) -> name('supports.destroy');
+// APÓS CONSTRUIR A ROTA, DEVE FAZER O SEGUINTE CMD: PHP ARTISAN OPTIMIZE. 
+
+//Suporte status
+// Route::get('/test', function () {
+//     dd(array_column(SupportStatus::cases(), 'name'));
+// });
+//Deletar comentários
+Route::delete('/supports/{id}',[SupportController::class,'destroy']) -> name('supports.destroy');
 //Atualizar o comentário
 Route::put('/supports/{id}',[SupportController::class, 'update']) ->name('supports.update');
 //Editar o comentário

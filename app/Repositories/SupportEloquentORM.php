@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use App\DTO\CreateSupportDTO;
-use App\DTO\UpdateSupportDTO;
+use App\DTO\Supports\CreateSupportDTO;
+use App\DTO\Supports\UpdateSupportDTO;
 use App\Models\Support;
 use App\Repositories\SupportRepositoryInterface;
 use stdClass;
@@ -25,11 +25,11 @@ class SupportEloquentORM implements SupportRepositoryInterface
                     ->where(function ($query) use ($filter){
                         if($filter){
                             $query->where('subject', $filter);
-                            $query->orWhere('body', 'like', "%$filter%");
+                            $query->orWhere('body', 'like', "%{$filter}%");
 
                         }
                     })
-                    ->paginate($totalPerPage, ["*"],"page", $page);
+                    ->paginate($totalPerPage, ['*'],'page', $page); 
 
         return new PaginationPresenter($result); 
                     

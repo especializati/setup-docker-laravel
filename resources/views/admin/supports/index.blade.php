@@ -1,4 +1,16 @@
-<h1>Listagem dos suportes</h1>
+@extends('admin/layouts/app')
+
+@section('title', 'Fórum')
+    
+
+@section('header')
+<h1>Listagem dos suportes</h1>   
+@endsection
+
+@section('content')
+    
+
+
 <a href="{{ route('supports.create')}}">Criar Dúvida</a>
 <table>
         <thead>
@@ -11,8 +23,8 @@
             @foreach ($supports->items() as $support)
                 <tr>
                     <td>{{$support->subject }}</td>
-                    <td>{{$support->status}}</td>
-                    <td>{{$support->subject}}</td>
+                    <td>{{getStatusSupport($support -> status)}}</td>
+                    <td>{{$support->body}}</td>
                     <td>
                         <a href="{{ route('supports.show', $support->id)}}">ir</a>
                         <a href="{{ route('supports.edit', $support->id)}}">Editar</a>
@@ -23,5 +35,7 @@
         </tbody>
 </table>
 
-<x-pagination :paginatior="$supports" />
-
+<x-pagination 
+    :paginator="$supports" 
+    :appends="$filters"/>
+@endsection
