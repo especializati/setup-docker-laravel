@@ -5,7 +5,7 @@
 ### Passo a passo
 Clone Repositório
 ```sh
-git clone -b laravel-12-with-php-8.4 https://github.com/especializati/setup-docker-laravel.git app-laravel
+git clone -b laravel-12-with-php8.4 https://github.com/especializati/setup-docker-laravel.git app-laravel
 ```
 ```sh
 cd app-laravel
