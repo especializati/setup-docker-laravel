@@ -4,6 +4,7 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
+        container_name: app
         restart: unless-stopped
         working_dir: /var/www/
         volumes:
@@ -16,6 +17,7 @@ services:
     # nginx
     nginx:
         image: nginx:alpine
+        container_name: nginx
         restart: unless-stopped
         ports:
             - "8989:80"
@@ -27,7 +29,8 @@ services:
 
     # db mysql
     db:
-        image: mysql:5.7.22
+        image: mysql/mysql-server:8.0
+        container_name: mysql
         restart: unless-stopped
         environment:
             MYSQL_DATABASE: ${DB_DATABASE:-laravel}
@@ -44,6 +47,7 @@ services:
     # PHPMyAdmin
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
+        container_name: phpmyadmin
         restart: unless-stopped
         ports:
             - "8080:80"
@@ -56,7 +60,8 @@ services:
 
     # redis
     redis:
-        image: redis:latest
+        image: redis:alpine
+        container_name: redis
         networks:
             - laravel
 
