@@ -1,5 +1,5 @@
 
-# Setup Docker Para Projetos Laravel (8, 9, 10 ou 11)
+# Setup Docker Para Projetos Laravel (8, 9, 10, 11 ou 12)
 [Assine a Academy, e Seja VIP!](https://academy.especializati.com.br)
 
 ### Passo a passo
@@ -29,7 +29,7 @@ cp .env.example .env
 ```
 
 
-Atualize as variáveis de ambiente do arquivo .env
+Atualize **APENAS** essas variáveis de ambiente do arquivo .env (as demais devem permanecer como estão)
 ```dosini
 APP_NAME="Especializa Ti"
 APP_URL=http://localhost:8989
@@ -53,13 +53,13 @@ REDIS_PORT=6379
 
 Suba os containers do projeto
 ```sh
-docker-compose up -d
+docker compose up -d
 ```
 
 
 Acessar o container
 ```sh
-docker-compose exec app bash
+docker compose exec app bash
 ```
 
 
