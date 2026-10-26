@@ -43,7 +43,7 @@ services:
 
     # PHPMyAdmin
     phpmyadmin:
-        image: phpmyadmin/phpmyadmin
+        image: phpmyadmin
         restart: unless-stopped
         ports:
             - "8080:80"
